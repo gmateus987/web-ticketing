@@ -21,14 +21,6 @@ services:
         networks:
             - php_nginx_network
     
-    redis:
-        image: redis:latest
-        ports:
-            - "6379:6379"
-        container_name: redis-web-ticketing
-        networks:
-            - php_redis_network
-    
 networks:
     php_nginx_network:
         driver: bridge

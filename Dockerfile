@@ -19,4 +19,7 @@ RUN apt-get install -y \
 RUN docker-php-ext-install pdo pdo_pgsql pgsql gd intl zip opcache
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+RUN pecl install redis-6.3.0 \
+    && docker-php-ext-enable redis
+
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
