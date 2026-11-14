@@ -1,0 +1,36 @@
+version: '1.0'
+
+services:
+    php:
+        build: .
+        volumes:
+            - ./:/var/www/html
+        container_name: php-web-ticketing
+        networks:
+            - php_nginx_network
+            - php_redis_network
+
+    nginx:
+        image: nginx:lastest
+        ports:
+            - "8080:80"
+        volumes:
+            - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+            - ./public:/var/www/html/public
+        container_name: nginx-web-ticketing
+        networks:
+            - php_nginx_network
+    
+    redis:
+        image: redis:latest
+        ports:
+            - "6379:6379"
+        container_name: redis-web-ticketing
+        networks:
+            - php_redis_network
+    
+    networks:
+        php_nginx_network:
+            driver: bridge
+        php_redis_network:
+            driver: bridge
