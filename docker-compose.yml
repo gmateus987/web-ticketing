@@ -11,7 +11,7 @@ services:
             - php_redis_network
 
     nginx:
-        image: nginx:lastest
+        image: nginx
         ports:
             - "8080:80"
         volumes:
@@ -29,8 +29,8 @@ services:
         networks:
             - php_redis_network
     
-    networks:
-        php_nginx_network:
-            driver: bridge
-        php_redis_network:
-            driver: bridge
+networks:
+    php_nginx_network:
+        driver: bridge
+    php_redis_network:
+        driver: bridge
