@@ -5,10 +5,9 @@ services:
         build: .
         volumes:
             - ./:/var/www/html
-        container_name: php-web-ticketing
+        container_name: web-ticketing
         networks:
-            - php_nginx_network
-            - php_redis_network
+            - nginx_network
 
     nginx:
         image: nginx
@@ -19,10 +18,8 @@ services:
             - ./public:/var/www/html/public
         container_name: nginx-web-ticketing
         networks:
-            - php_nginx_network
+            - nginx_network
     
 networks:
-    php_nginx_network:
-        driver: bridge
-    php_redis_network:
+    nginx_network:
         driver: bridge
