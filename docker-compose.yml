@@ -2,7 +2,10 @@ version: '1.0'
 
 services:
     php:
-        build: .
+        build:
+            context: .
+            args:
+                APP_VERSION: ${APP_VERSION:-dev}
         volumes:
             - ./:/var/www/html
         container_name: web-ticketing
