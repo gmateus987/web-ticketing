@@ -1,6 +1,6 @@
 FROM php:8.4.27-fpm
 
-ARG APP_VERSION=1.0
+ARG APP_VERSION=dev
 WORKDIR /var/www/html
 
 RUN apt-get update
