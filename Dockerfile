@@ -1,6 +1,7 @@
 FROM php:8.4.27-fpm
 
 ARG APP_VERSION=dev
+ENV APP_VERSION=${APP_VERSION}
 WORKDIR /var/www/html
 
 RUN apt-get update
